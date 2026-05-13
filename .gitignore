@@ -1,0 +1,20 @@
+# Virtual Environment - The most important one!
+venv/
+env/
+ENV/
+
+# Python compiled files (the 'clutter')
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django local database
+db.sqlite3
+
+# VS Code settings
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
