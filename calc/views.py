@@ -9,21 +9,17 @@ def home(request):
 
 def calculate(request):
     expression = request.POST.get('expression', '')
+    res = None  # Start with None instead of an empty string
 
-    # 2. Safety Check!
-    # We only allow: 0-9, +, -, *, /, and .
-    # This prevents people from sending "import os; os.remove('project')"
     if re.fullmatch(r'[0-9+\-*/.]+', expression):
         try:
-            # 3. Solve the math string
             res = eval(expression)
+            # If the result is 0.0 or 0, Python stores it as 0
         except ZeroDivisionError:
             res = "Error: Div by 0"
         except Exception:
             res = "Invalid Math"
     else:
-        # If the string has letters or weird symbols, we block it
-        res = "Safety Block: Invalid Input"
+        res = "Error"
 
-    # 4. Send the result back
     return render(request, "calc/home.html", {'result': res})

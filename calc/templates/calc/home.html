@@ -13,8 +13,9 @@
     <form action="/calculate/" method="post">
       {% csrf_token %}
 
-      <input type="text" name="expression" id="display" class="display" value="{{ result|default:'' }}" readonly>
-
+      {% if result is not None %}
+      <input type="text" name="expression" id="display" class="display" value="{{ result }}" readonly>
+      {% endif %}
       <div class="buttons">
 
         <button type="button" onclick="appendToDisplay('1')">1</button>
