@@ -1,11 +1,11 @@
-// This function adds the clicked button's value to the screen
 function appendToDisplay(value) {
   const display = document.getElementById('display');
+  if (display.value === "Error" || display.value === "Invalid Input") {
+    display.value = "";
+  }
   display.value += value;
 }
 
-// This function clears the screen when 'C' is pressed
 function clearDisplay() {
-  const display = document.getElementById('display');
-  display.value = '';
+  document.getElementById('display').value = '';
 }

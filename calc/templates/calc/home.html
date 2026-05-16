@@ -1,42 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <title>Django Calculator</title>
   <link rel="stylesheet" href="{% static 'calc/css/styles.css' %}">
 </head>
 
 <body>
 
-
   <div class="calculator">
     <form action="/calculate/" method="post">
       {% csrf_token %}
+      <input type="text" name="expression" id="display" class="display"
+        value="{% if result is not None %}{{ result }}{% endif %}" readonly>
 
-      {% if result is not None %}
-      <input type="text" name="expression" id="display" class="display" value="{{ result }}" readonly>
-      {% endif %}
       <div class="buttons">
-
         <button type="button" onclick="appendToDisplay('1')">1</button>
         <button type="button" onclick="appendToDisplay('2')">2</button>
         <button type="button" onclick="appendToDisplay('3')">3</button>
         <button type="button" class="clear" onclick="clearDisplay()">C</button>
-
 
         <button type="button" onclick="appendToDisplay('4')">4</button>
         <button type="button" onclick="appendToDisplay('5')">5</button>
         <button type="button" onclick="appendToDisplay('6')">6</button>
         <button type="button" class="operator" onclick="appendToDisplay('+')">+</button>
 
-
         <button type="button" onclick="appendToDisplay('7')">7</button>
         <button type="button" onclick="appendToDisplay('8')">8</button>
         <button type="button" onclick="appendToDisplay('9')">9</button>
         <button type="button" class="operator" onclick="appendToDisplay('-')">-</button>
 
-
-        <button type="button" class="operator" onclick="appendToDisplay('*')">X</button>
+        <button type="button" class="operator" onclick="appendToDisplay('*')">*</button>
         <button type="button" onclick="appendToDisplay('0')">0</button>
         <button type="button" class="operator" onclick="appendToDisplay('/')">/</button>
         <button type="submit" class="equal">=</button>
@@ -45,7 +41,6 @@
   </div>
 
   <script src="{% static 'calc/js/script.js' %}"></script>
-
 </body>
 
 </html>
